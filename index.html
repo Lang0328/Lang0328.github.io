@@ -223,11 +223,11 @@
       animation: slideInUp 0.8s ease-out forwards;
       opacity: 0;
       transition:
-        box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-        border-color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-        border-width 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-        background-color 0.3s ease,
-        transform 0.1s ease-out;
+        box-shadow 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+        border-color 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+        border-width 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+        background-color 0.4s ease,
+        transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       box-sizing: border-box;
       transform-style: preserve-3d;
       perspective: 1000px;
@@ -238,9 +238,10 @@
       border-color: var(--accent-blue);
       border-width: 2px;
       box-shadow:
-        0 0 20px rgba(23, 114, 208, 0.25),
-        0 0 40px rgba(23, 114, 208, 0.15),
-        0 0 60px rgba(23, 114, 208, 0.08);
+        0 0 0 1px rgba(23, 114, 208, 0.3),
+        0 0 30px rgba(23, 114, 208, 0.35),
+        0 0 60px rgba(23, 114, 208, 0.22),
+        0 0 90px rgba(23, 114, 208, 0.12);
       background-color: var(--bg-secondary);
     }
 
@@ -260,8 +261,17 @@
         inset 0 0 20px var(--shadow-color);
     }
 
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+      -webkit-tap-highlight-color: transparent;
+    }
+
     body {
       transition: background-color 0.5s ease, color 0.5s ease;
+      text-rendering: optimizeSpeed;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
     .controls-container {
@@ -638,6 +648,103 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
+    // ====== 滚轮轻微拖拽动画 ======
+    // 对页面中所有大块内容元素施加拖拽偏移，用 lerp 衰减产生"滞后跟随"效果
+    var dragRafId = null;
+    var wheelVelocity = 0;     // 滚轮速度（带衰减）
+
+    // 收集当前可见语言下所有参与拖拽的元素
+    function getDragTargets() {
+      // 选择所有 .section-box + 头像区 table + clustrmaps + footer
+      var visible = document.documentElement.lang === 'zh-CN'
+        ? $('chinese-content') : $('english-content');
+      if (!visible || visible.style.display === 'none') {
+        visible = $('english-content') || $('chinese-content');
+      }
+      if (!visible) return [];
+      // 选择可见内容区内的所有顶层 table（直接子元素的 table）
+      var tables = visible.querySelectorAll('table');
+      return tables;
+    }
+
+    // 给元素打上拖拽标记，记录当前偏移
+    function ensureDragAttr(els) {
+      for (var i = 0; i < els.length; i++) {
+        if (!els[i].hasAttribute('data-drag-offset')) {
+          els[i].setAttribute('data-drag-offset', '0');
+        }
+      }
+    }
+
+    function kickDragLoop() {
+      if (!dragRafId) {
+        dragRafId = requestAnimationFrame(dragLoop);
+      }
+    }
+
+    function dragLoop() {
+      dragRafId = null;
+
+      // 衰减滚轮速度
+      wheelVelocity *= 0.88;
+      if (Math.abs(wheelVelocity) < 0.05) wheelVelocity = 0;
+
+      var targets = getDragTargets();
+      ensureDragAttr(targets);
+
+      var anyMotion = Math.abs(wheelVelocity) > 0.02;
+
+      for (var i = 0; i < targets.length; i++) {
+        var el = targets[i];
+        var cur = parseFloat(el.getAttribute('data-drag-offset')) || 0;
+        // 每个元素偏移用 lerp 衰减，加上滚轮速度驱动
+        var next = cur * 0.85 + wheelVelocity * 0.35;
+        if (Math.abs(next) < 0.15) next = 0;
+        el.setAttribute('data-drag-offset', next.toFixed(3));
+
+        // 组合拖拽偏移 + 3D 倾斜（如果有的话）
+        var tilt = el.getAttribute('data-tilt') || '';
+        if (next !== 0 || tilt) {
+          var parts = [];
+          if (tilt) parts.push(tilt);
+          if (next !== 0) parts.push('translateY(' + next.toFixed(2) + 'px)');
+          el.style.transform = parts.join(' ');
+          el.style.transition = 'transform 0s linear, box-shadow 0.5s ease, border-color 0.5s ease, border-width 0.5s ease, background-color 0.3s ease';
+          anyMotion = true;
+        } else if (cur !== 0) {
+          // 归位
+          el.style.transform = tilt || '';
+          el.style.transition = 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.5s ease, border-color 0.5s ease, border-width 0.5s ease, background-color 0.3s ease';
+        }
+      }
+
+      // 粒子背景轻微视差
+      var particlesBg = $('particlesBg');
+      if (particlesBg) {
+        var sy = window.pageYOffset || document.documentElement.scrollTop;
+        particlesBg.style.transform = 'translateY(' + (sy * 0.1) + 'px)';
+      }
+
+      // 回到顶部按钮
+      var backBtn = $$('.back-to-top');
+      if (backBtn) {
+        var st = window.pageYOffset || document.documentElement.scrollTop;
+        if (st > 300) { backBtn.classList.add('visible'); }
+        else { backBtn.classList.remove('visible'); }
+      }
+
+      if (anyMotion) {
+        dragRafId = requestAnimationFrame(dragLoop);
+      } else {
+        // 全部归位
+        for (var j = 0; j < targets.length; j++) {
+          targets[j].setAttribute('data-drag-offset', '0');
+          var t = targets[j].getAttribute('data-tilt') || '';
+          targets[j].style.transform = t || '';
+        }
+      }
+    }
+
     // ====== 页面加载初始化 ======
     window.onload = function() {
       // --- 语言恢复 ---
@@ -674,34 +781,15 @@
         autoThemeInterval = setInterval(checkAutoTheme, 60000);
       }
 
-      // --- 滚动处理（passive + 节流） ---
-      var lastScrollY = 0;
-      var scrollTimer;
-      var backToTop = $$('.back-to-top');
-
-      window.addEventListener('scroll', throttle(function() {
-        var currentScrollY = window.pageYOffset;
-        if (currentScrollY > lastScrollY) {
-          document.body.classList.remove('scroll-dragging-up');
-          document.body.classList.add('scroll-dragging-down');
-        } else if (currentScrollY < lastScrollY) {
-          document.body.classList.remove('scroll-dragging-down');
-          document.body.classList.add('scroll-dragging-up');
-        }
-        lastScrollY = currentScrollY;
-
-        clearTimeout(scrollTimer);
-        scrollTimer = setTimeout(function() {
-          document.body.classList.remove('scroll-dragging-up', 'scroll-dragging-down');
-        }, 150);
-
-        // 回到顶部按钮
-        if (currentScrollY > 300) {
-          backToTop.classList.add('visible');
-        } else {
-          backToTop.classList.remove('visible');
-        }
-      }, 16), { passive: true });
+      // ====== 滚轮轻微拖拽动画 ======
+      window.addEventListener('wheel', function(e) {
+        // 累加滚轮速度（deltaY 可正可负）
+        wheelVelocity += e.deltaY * 0.1;
+        // 限制最大速度，避免一次性滚太多
+        if (wheelVelocity > 40) wheelVelocity = 40;
+        if (wheelVelocity < -40) wheelVelocity = -40;
+        kickDragLoop();
+      }, { passive: true });
     };
 
     // ====== Service Worker ======
@@ -852,11 +940,19 @@
           box.addEventListener('mouseleave', function() {
             isHovering = false;
             if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
-            box.style.transform = '';
+            box.removeAttribute('data-tilt');
+            // 恢复为仅拖拽偏移（或清空），并保留 box-shadow 过渡
+            var dragOff = box.getAttribute('data-drag-offset') || '0';
+            if (parseFloat(dragOff) !== 0) {
+              box.style.transform = 'translateY(' + parseFloat(dragOff).toFixed(2) + 'px)';
+            } else {
+              box.style.transform = '';
+            }
+            box.style.transition = 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.5s ease, border-color 0.5s ease, border-width 0.5s ease, background-color 0.3s ease';
           });
           box.addEventListener('mousemove', function(e) {
             if (!isHovering) return;
-            if (rafId) return; // 上一帧还未执行，跳过
+            if (rafId) return;
             rafId = requestAnimationFrame(function() {
               rafId = null;
               if (!isHovering) return;
@@ -865,13 +961,21 @@
               var y = e.clientY - rect.top;
               var rotateX = (y - rect.height / 2) / 25;
               var rotateY = (rect.width / 2 - x) / 25;
-              box.style.transform = 'perspective(1000px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg)';
+              var tilt = 'perspective(1000px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg)';
+              box.setAttribute('data-tilt', tilt);
+              var dragOff = box.getAttribute('data-drag-offset') || '0';
+              var parts = [tilt];
+              var d = parseFloat(dragOff);
+              if (d !== 0) parts.push('translateY(' + d.toFixed(2) + 'px)');
+              box.style.transform = parts.join(' ');
+              box.style.transition = 'transform 0s linear, box-shadow 0.5s ease, border-color 0.5s ease, border-width 0.5s ease, background-color 0.3s ease';
             });
           });
         })(sectionBoxes[k]);
       }
     });
   </script>
+
 </head>
 
 <body>
