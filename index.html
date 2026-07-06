@@ -654,17 +654,40 @@
     var wheelVelocity = 0;     // 滚轮速度（带衰减）
 
     // 收集当前可见语言下所有参与拖拽的元素
+    // 只选择顶层大块元素（section-box 和顶级 table），排除嵌套在 section-box 内部的子 table
     function getDragTargets() {
-      // 选择所有 .section-box + 头像区 table + clustrmaps + footer
       var visible = document.documentElement.lang === 'zh-CN'
         ? $('chinese-content') : $('english-content');
       if (!visible || visible.style.display === 'none') {
         visible = $('english-content') || $('chinese-content');
       }
       if (!visible) return [];
-      // 选择可见内容区内的所有顶层 table（直接子元素的 table）
-      var tables = visible.querySelectorAll('table');
+      // 只选可见内容区的直接子 table（顶层大块），排除嵌套 table
+      var tables = [];
+      var children = visible.children;
+      for (var i = 0; i < children.length; i++) {
+        collectTopLevelTables(children[i], tables);
+      }
       return tables;
+    }
+
+    // 递归收集顶层 table：如果元素本身是 table 则加入，否则递归子元素
+    function collectTopLevelTables(el, result) {
+      if (!el || el.nodeType !== 1) return;
+      if (el.tagName === 'TABLE') {
+        result.push(el);
+        return; // 不再深入 table 内部
+      }
+      // 非 table 容器，继续找直接子 table
+      var kids = el.children;
+      for (var i = 0; i < kids.length; i++) {
+        if (kids[i].tagName === 'TABLE') {
+          result.push(kids[i]);
+          // 不深入 table 内部，避免选中嵌套的子 table
+        } else {
+          collectTopLevelTables(kids[i], result);
+        }
+      }
     }
 
     // 给元素打上拖拽标记，记录当前偏移
@@ -784,7 +807,7 @@
       // ====== 滚轮轻微拖拽动画 ======
       window.addEventListener('wheel', function(e) {
         // 累加滚轮速度（deltaY 可正可负）
-        wheelVelocity += e.deltaY * 0.1;
+        wheelVelocity += -e.deltaY * 0.1;
         // 限制最大速度，避免一次性滚太多
         if (wheelVelocity > 40) wheelVelocity = 40;
         if (wheelVelocity < -40) wheelVelocity = -40;
