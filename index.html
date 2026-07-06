@@ -1,0 +1,1281 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <title>Lang Qin（秦朗）</title>
+
+  <meta name="author" content="Lang Qin">
+  <meta name="description" content="Lang Qin's personal homepage - Student, Researcher, Developer">
+  <meta name="keywords" content="Lang Qin, 秦朗, student, research, software engineering, AI, machine learning">
+  <meta property="og:title" content="Lang Qin（秦朗）- Personal Homepage">
+  <meta property="og:description" content="Student and researcher interested in software engineering and AI">
+  <meta property="og:type" content="website">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="preload" href="images/头像.jpg" as="image">
+  <link rel="preload" href="images/研究.jpg" as="image">
+  <link rel="preload" href="images/校徽.png" as="image">
+  <link rel="preload" href="images/初中校徽.jpg" as="image">
+
+  <link rel="stylesheet" type="text/css" href="stylesheet.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌐</text></svg>">
+
+  <style>
+    :root {
+      --bg-primary: #1a1a1a;
+      --bg-secondary: rgba(42, 42, 42, 0.7);
+      --text-primary: #ffffff;
+      --text-secondary: #87ceeb;
+      --border-color: rgba(255, 255, 255, 0.25);
+      --border-glow: rgba(135, 206, 235, 0.5);
+      --shadow-color: rgba(135, 206, 235, 0.2);
+      --accent-blue: #1772d0;
+      --accent-purple: #c9a0dc;
+    }
+
+    [data-theme="light"] {
+      --bg-primary: #f5f5f5;
+      --bg-secondary: rgba(255, 255, 255, 0.8);
+      --text-primary: #1a1a1a;
+      --text-secondary: #1772d0;
+      --border-color: rgba(26, 26, 26, 0.25);
+      --border-glow: rgba(23, 114, 208, 0.5);
+      --shadow-color: rgba(23, 114, 208, 0.15);
+      --accent-blue: #1772d0;
+      --accent-purple: #9b59b6;
+    }
+
+    .particles-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      background: var(--border-glow);
+      border-radius: 50%;
+      opacity: 0.4;
+      animation: float-particle 20s infinite linear;
+    }
+
+    @keyframes float-particle {
+      0%, 100% {
+        transform: translateY(100vh) translateX(0);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.4;
+      }
+      90% {
+        opacity: 0.4;
+      }
+      100% {
+        transform: translateY(-10vh) translateX(50px);
+        opacity: 0;
+      }
+    }
+
+    .cursor-glow {
+      position: fixed;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--border-glow) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 99997;
+      opacity: 0.12;
+      transition: opacity 0.3s ease, left 0.1s ease, top 0.1s ease;
+      filter: blur(30px);
+    }
+
+    .ripple {
+      position: fixed;
+      border-radius: 50%;
+      background: var(--border-glow);
+      opacity: 0.4;
+      pointer-events: none;
+      z-index: 99996;
+      animation: ripple-effect 0.8s ease-out forwards;
+    }
+
+    @keyframes ripple-effect {
+      0% {
+        transform: scale(0);
+        opacity: 0.5;
+      }
+      100% {
+        transform: scale(4);
+        opacity: 0;
+      }
+    }
+
+    .loading-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple), var(--accent-blue));
+      z-index: 999998;
+      transition: width 0.3s ease;
+      box-shadow: 0 0 10px var(--shadow-color);
+    }
+
+    heading {
+      background: linear-gradient(90deg, var(--text-primary), var(--text-secondary), var(--accent-purple), var(--text-primary));
+      background-size: 300% 100%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: gradient-shift 8s ease infinite;
+    }
+
+    @keyframes gradient-shift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    name {
+      background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple), var(--text-secondary), var(--accent-blue));
+      background-size: 300% 100%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: gradient-shift 6s ease infinite;
+    }
+
+    .greeting {
+      font-family: 'Quicksand', sans-serif;
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+      opacity: 0;
+      animation: fadeInGreeting 1s ease 0.5s forwards;
+    }
+
+    @keyframes fadeInGreeting {
+      to { opacity: 1; }
+    }
+
+    .live-clock {
+      font-family: 'Quicksand', sans-serif;
+      font-size: 13px;
+      color: var(--text-secondary);
+      padding: 8px 14px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-glow);
+      border-radius: 8px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 2px 8px var(--shadow-color);
+      letter-spacing: 1px;
+      font-weight: 600;
+    }
+
+    .copy-toast {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: var(--bg-secondary);
+      color: var(--text-primary);
+      padding: 12px 24px;
+      border-radius: 25px;
+      border: 1px solid var(--border-glow);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px var(--shadow-color);
+      z-index: 99999;
+      opacity: 0;
+      transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      font-family: 'Quicksand', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .copy-toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    .section-box {
+      background-color: var(--bg-secondary);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 28px;
+      margin-bottom: 24px;
+      text-align: left;
+      position: relative;
+      animation: slideInUp 0.8s ease-out forwards;
+      opacity: 0;
+      transition:
+        box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+        border-color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+        border-width 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+        background-color 0.3s ease,
+        transform 0.1s ease-out;
+      box-sizing: border-box;
+      transform-style: preserve-3d;
+      perspective: 1000px;
+      will-change: transform, box-shadow;
+    }
+
+    .section-box:hover {
+      border-color: var(--accent-blue);
+      border-width: 2px;
+      box-shadow:
+        0 0 20px rgba(23, 114, 208, 0.25),
+        0 0 40px rgba(23, 114, 208, 0.15),
+        0 0 60px rgba(23, 114, 208, 0.08);
+      background-color: var(--bg-secondary);
+    }
+
+    body::before {
+      content: '';
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      right: 15px;
+      bottom: 15px;
+      border: 3px solid var(--border-glow);
+      border-radius: 20px;
+      pointer-events: none;
+      z-index: 99999;
+      box-shadow:
+        0 0 20px var(--shadow-color),
+        inset 0 0 20px var(--shadow-color);
+    }
+
+    body {
+      transition: background-color 0.5s ease, color 0.5s ease;
+    }
+
+    .controls-container {
+      position: absolute;
+      top: 35px;
+      right: 45px;
+      z-index: 100000;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .theme-toggle {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-glow);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 10px var(--shadow-color);
+      backdrop-filter: blur(10px);
+    }
+
+    .theme-toggle:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 20px var(--shadow-color);
+      border-color: var(--accent-blue);
+    }
+
+    .theme-toggle svg {
+      width: 22px;
+      height: 22px;
+      fill: var(--text-secondary);
+      transition: fill 0.3s ease, transform 0.3s ease;
+    }
+
+    .theme-toggle:hover svg {
+      transform: rotate(15deg);
+    }
+
+    .language-switcher {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-glow);
+      border-radius: 10px;
+      padding: 10px 18px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 10px var(--shadow-color);
+      backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .language-switcher:hover {
+      background: var(--bg-primary);
+      border-color: var(--accent-blue);
+      box-shadow: 0 4px 15px rgba(23, 114, 208, 0.35);
+      transform: translateY(-1px);
+    }
+
+    .lang-text {
+      font-family: 'Quicksand', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-secondary);
+      letter-spacing: 0.5px;
+      transition: all 0.3s ease;
+    }
+
+    .auto-theme-toggle {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-glow);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 10px var(--shadow-color);
+      backdrop-filter: blur(10px);
+      position: relative;
+    }
+
+    .auto-theme-toggle:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 20px var(--shadow-color);
+      border-color: var(--accent-blue);
+    }
+
+    .auto-theme-toggle.active {
+      border-color: var(--accent-blue);
+      background: rgba(23, 114, 208, 0.15);
+    }
+
+    .auto-theme-toggle span {
+      font-size: 22px;
+      font-weight: bold;
+      font-family: 'Quicksand', sans-serif;
+      color: var(--text-secondary);
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    .auto-theme-toggle.active span {
+      color: var(--accent-blue);
+    }
+
+    .auto-theme-toggle:hover span {
+      transform: rotate(180deg);
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 45px;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-glow);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 10px var(--shadow-color);
+      backdrop-filter: blur(10px);
+      z-index: 99999;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 20px var(--shadow-color);
+      border-color: var(--accent-blue);
+    }
+
+    .back-to-top svg {
+      width: 22px;
+      height: 22px;
+      stroke: var(--text-secondary);
+      transition: stroke 0.3s ease, transform 0.3s ease;
+    }
+
+    .back-to-top:hover svg {
+      stroke: var(--accent-blue);
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 20px !important;
+      }
+
+      body::before,
+      body::after {
+        top: 8px;
+        left: 8px;
+        right: 8px;
+        bottom: 8px;
+      }
+
+      .controls-container {
+        top: 15px;
+        right: 20px;
+      }
+
+      .section-box {
+        padding: 18px;
+        margin-bottom: 16px;
+      }
+
+      name {
+        font-size: 28px !important;
+      }
+
+      heading {
+        font-size: 24px !important;
+      }
+    }
+
+    img {
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    img.loaded {
+      opacity: 1;
+    }
+
+    .skeleton {
+      background: linear-gradient(90deg, var(--bg-secondary) 25%, var(--bg-primary) 50%, var(--bg-secondary) 75%);
+      background-size: 200% 100%;
+      animation: skeleton-loading 1.5s infinite;
+      border-radius: inherit;
+      min-height: 100px;
+    }
+
+    @keyframes skeleton-loading {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+  </style>
+
+  <script>
+    // ====== 缓存 DOM 引用，避免重复查询 ======
+    var domCache = {};
+    function $(id) { return domCache[id] || (domCache[id] = document.getElementById(id)); }
+    function $$(sel) { return document.querySelector(sel); }
+
+    var DARK_ICON  = '<svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+    var LIGHT_ICON = '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>';
+
+    // ====== 节流工具函数 ======
+    function throttle(fn, delay) {
+      var last = 0, timer;
+      return function() {
+        var now = Date.now(), ctx = this, args = arguments;
+        if (now - last >= delay) { last = now; fn.apply(ctx, args); }
+        else { clearTimeout(timer); timer = setTimeout(function() { last = Date.now(); fn.apply(ctx, args); }, delay - (now - last)); }
+      };
+    }
+
+    // ====== 语言切换 ======
+    function switchLanguage() {
+      var currentLang = document.documentElement.lang;
+      var englishContent = $('english-content');
+      var chineseContent = $('chinese-content');
+      var langText = $$('.lang-text');
+
+      if (currentLang === 'en' || !currentLang) {
+        englishContent.style.display = 'none';
+        chineseContent.style.display = 'block';
+        document.documentElement.lang = 'zh-CN';
+        document.title = 'Lang Qin（秦朗）- 中文版';
+        langText.textContent = '中文 → EN';
+        localStorage.setItem('preferredLanguage', 'zh');
+      } else {
+        englishContent.style.display = 'block';
+        chineseContent.style.display = 'none';
+        document.documentElement.lang = 'en';
+        document.title = 'Lang Qin（秦朗）';
+        langText.textContent = 'EN → 中文';
+        localStorage.setItem('preferredLanguage', 'en');
+      }
+    }
+
+    // ====== 主题切换 ======
+    function applyThemeUI(isLight) {
+      var themeToggle = $$('.theme-toggle');
+      themeToggle.innerHTML = isLight ? LIGHT_ICON : DARK_ICON;
+    }
+
+    function toggleTheme() {
+      var html = document.documentElement;
+      if (html.getAttribute('data-theme') === 'light') {
+        html.removeAttribute('data-theme');
+        applyThemeUI(false);
+        localStorage.setItem('theme', 'dark');
+      } else {
+        html.setAttribute('data-theme', 'light');
+        applyThemeUI(true);
+        localStorage.setItem('theme', 'light');
+      }
+    }
+
+    // ====== 自动主题（日出/日落） ======
+    var autoThemeEnabled = localStorage.getItem('autoTheme') === 'true';
+    var autoThemeInterval = null;
+
+    function calculateSunriseSunset(lat, lon, date) {
+      var rad = Math.PI / 180;
+      var dayOfYear = Math.floor((date - new Date(date.getFullYear(), 0, 0)) / 86400000);
+      var zenith = 90.833 / 180 * Math.PI;
+      var lngHour = lon / 15;
+      var t = dayOfYear + ((6 - lngHour) / 24);
+      var M = (0.9856 * t) - 3.289;
+      var L = (M + (1.916 * Math.sin(rad * M)) + (0.020 * Math.sin(2 * rad * M)) + 282.634) % 360;
+      if (L < 0) L += 360;
+      var RA = Math.atan(0.91764 * Math.tan(rad * L)) / rad;
+      var Lquadrant = Math.floor(L / 90) * 90;
+      var RAquadrant = Math.floor(RA / 90) * 90;
+      RA = RA + (Lquadrant - RAquadrant);
+      RA = RA / 15;
+      var sinDec = 0.39782 * Math.sin(rad * L);
+      var cosDec = Math.cos(Math.asin(sinDec));
+      var cosH = (Math.cos(zenith) - (sinDec * Math.sin(rad * lat))) / (cosDec * Math.cos(rad * lat));
+      if (cosH > 1 || cosH < -1) return null;
+      var H = Math.acos(cosH) / rad;
+      var sunrise = (H + RA - (0.06571 * t) - 6.222 - lngHour) % 24;
+      var sunset = ((-H) + RA - (0.06571 * t) - 6.222 - lngHour) % 24;
+      if (sunrise < 0) sunrise += 24;
+      if (sunset < 0) sunset += 24;
+      return { sunrise: sunrise, sunset: sunset };
+    }
+
+    function getUserLocation() {
+      return new Promise(function(resolve) {
+        if ('geolocation' in navigator) {
+          navigator.geolocation.getCurrentPosition(
+            function(pos) { resolve({ lat: pos.coords.latitude, lon: pos.coords.longitude }); },
+            function() { resolveFallbackLocation(resolve); }
+          );
+        } else { resolveFallbackLocation(resolve); }
+      });
+    }
+
+    function resolveFallbackLocation(resolve) {
+      var offset = -new Date().getTimezoneOffset() / 60;
+      resolve({ lat: 31.23, lon: 121.47 + (offset - 8) * 15 });
+    }
+
+    async function checkAutoTheme() {
+      if (!autoThemeEnabled) return;
+      try {
+        var location = await getUserLocation();
+        var now = new Date();
+        var times = calculateSunriseSunset(location.lat, location.lon, now);
+        if (!times) return;
+        var currentHour = now.getHours() + now.getMinutes() / 60;
+        var html = document.documentElement;
+        var shouldBeLight = currentHour >= times.sunrise && currentHour < times.sunset;
+        var currentTheme = html.getAttribute('data-theme');
+        if (shouldBeLight && currentTheme !== 'light') {
+          html.setAttribute('data-theme', 'light');
+          applyThemeUI(true);
+          localStorage.setItem('theme', 'light');
+        } else if (!shouldBeLight && currentTheme === 'light') {
+          html.removeAttribute('data-theme');
+          applyThemeUI(false);
+          localStorage.setItem('theme', 'dark');
+        }
+      } catch (e) { /* 静默处理 */ }
+    }
+
+    function toggleAutoTheme() {
+      autoThemeEnabled = !autoThemeEnabled;
+      localStorage.setItem('autoTheme', autoThemeEnabled);
+      var btn = $('autoThemeToggle');
+      if (autoThemeEnabled) {
+        btn.classList.add('active');
+        checkAutoTheme();
+        autoThemeInterval = setInterval(checkAutoTheme, 60000);
+      } else {
+        btn.classList.remove('active');
+        if (autoThemeInterval) { clearInterval(autoThemeInterval); autoThemeInterval = null; }
+      }
+    }
+
+    // ====== Toast 提示 ======
+    var toastTimer = null;
+    function showToast(message) {
+      var toast = $('copyToast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      if (toastTimer) clearTimeout(toastTimer);
+      toastTimer = setTimeout(function() { toast.classList.remove('show'); }, 2500);
+    }
+
+    // ====== 滚动到顶部 ======
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // ====== 页面加载初始化 ======
+    window.onload = function() {
+      // --- 语言恢复 ---
+      var savedLang = localStorage.getItem('preferredLanguage') || 'en';
+      var langText = $$('.lang-text');
+      if (savedLang === 'zh') {
+        $('english-content').style.display = 'none';
+        $('chinese-content').style.display = 'block';
+        document.documentElement.lang = 'zh-CN';
+        document.title = 'Lang Qin（秦朗）- 中文版';
+        langText.textContent = '中文 → EN';
+      } else {
+        $('english-content').style.display = 'block';
+        $('chinese-content').style.display = 'none';
+        document.documentElement.lang = 'en';
+        document.title = 'Lang Qin（秦朗）';
+        langText.textContent = 'EN → 中文';
+      }
+
+      // --- 主题恢复 ---
+      var savedTheme = localStorage.getItem('theme') || 'dark';
+      if (savedTheme === 'light') {
+        document.documentElement.setAttribute('data-theme', 'light');
+        applyThemeUI(true);
+      } else {
+        applyThemeUI(false);
+      }
+
+      // --- 自动主题 ---
+      var autoThemeToggleBtn = $('autoThemeToggle');
+      if (autoThemeEnabled) {
+        autoThemeToggleBtn.classList.add('active');
+        checkAutoTheme();
+        autoThemeInterval = setInterval(checkAutoTheme, 60000);
+      }
+
+      // --- 滚动处理（passive + 节流） ---
+      var lastScrollY = 0;
+      var scrollTimer;
+      var backToTop = $$('.back-to-top');
+
+      window.addEventListener('scroll', throttle(function() {
+        var currentScrollY = window.pageYOffset;
+        if (currentScrollY > lastScrollY) {
+          document.body.classList.remove('scroll-dragging-up');
+          document.body.classList.add('scroll-dragging-down');
+        } else if (currentScrollY < lastScrollY) {
+          document.body.classList.remove('scroll-dragging-down');
+          document.body.classList.add('scroll-dragging-up');
+        }
+        lastScrollY = currentScrollY;
+
+        clearTimeout(scrollTimer);
+        scrollTimer = setTimeout(function() {
+          document.body.classList.remove('scroll-dragging-up', 'scroll-dragging-down');
+        }, 150);
+
+        // 回到顶部按钮
+        if (currentScrollY > 300) {
+          backToTop.classList.add('visible');
+        } else {
+          backToTop.classList.remove('visible');
+        }
+      }, 16), { passive: true });
+    };
+
+    // ====== Service Worker ======
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.register('sw.js').then(function(registration) {
+          registration.addEventListener('updatefound', function() {
+            var newWorker = registration.installing;
+            newWorker.addEventListener('statechange', function() {
+              if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                // 新版本可用
+              }
+            });
+          });
+        }).catch(function() {});
+      });
+    }
+
+    // ====== DOMContentLoaded ======
+    document.addEventListener('DOMContentLoaded', function() {
+      // --- 加载进度条 ---
+      var loadingBar = $('loadingBar');
+      var progress = 0;
+      var loadInterval = setInterval(function() {
+        progress += Math.random() * 30;
+        if (progress >= 100) {
+          progress = 100;
+          clearInterval(loadInterval);
+          setTimeout(function() {
+            loadingBar.style.opacity = '0';
+            setTimeout(function() { loadingBar.style.display = 'none'; }, 300);
+          }, 200);
+        }
+        loadingBar.style.width = progress + '%';
+      }, 150);
+
+      // --- 图片懒加载处理 ---
+      var images = document.querySelectorAll('img');
+      for (var i = 0; i < images.length; i++) {
+        (function(img) {
+          if (img.complete) {
+            img.classList.add('loaded');
+            img.classList.remove('skeleton');
+          } else {
+            img.addEventListener('load', function() { this.classList.add('loaded'); this.classList.remove('skeleton'); }, { once: true });
+            img.addEventListener('error', function() { this.classList.add('loaded'); this.classList.remove('skeleton'); this.style.display = 'none'; }, { once: true });
+          }
+        })(images[i]);
+      }
+
+      // --- 首次访问提示 ---
+      var isFirstVisit = !localStorage.getItem('homepage_visited');
+      if (isFirstVisit && 'serviceWorker' in navigator) {
+        var cacheNotice = document.createElement('div');
+        cacheNotice.style.cssText = 'position:fixed;top:80px;right:20px;background:var(--bg-secondary);border:1px solid var(--accent-blue);border-radius:10px;padding:12px 18px;color:var(--text-secondary);font-size:13px;z-index:100001;box-shadow:0 4px 15px rgba(23,114,208,0.3);backdrop-filter:blur(10px);animation:slideIn 0.3s ease;max-width:280px;line-height:1.5;';
+        cacheNotice.innerHTML = '<div style="font-weight:bold;margin-bottom:5px;color:var(--accent-blue);">⚡ 首次加载优化中</div><div style="font-size:12px;opacity:0.8;">正在缓存资源，下次访问将瞬间加载！</div>';
+        document.body.appendChild(cacheNotice);
+        setTimeout(function() {
+          cacheNotice.style.animation = 'slideOut 0.3s ease forwards';
+          setTimeout(function() { cacheNotice.remove(); }, 300);
+        }, 4000);
+        localStorage.setItem('homepage_visited', 'true');
+
+        var styleEl = document.createElement('style');
+        styleEl.textContent = '@keyframes slideIn{from{transform:translateX(100%);opacity:0}to{transform:translateX(0);opacity:1}}@keyframes slideOut{from{transform:translateX(0);opacity:1}to{transform:translateX(100%);opacity:0}}';
+        document.head.appendChild(styleEl);
+      }
+
+      // --- 粒子背景（使用 DocumentFragment 批量插入） ---
+      var particlesBg = $('particlesBg');
+      var frag = document.createDocumentFragment();
+      for (var j = 0; j < 20; j++) {
+        var particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.animationDelay = Math.random() * 20 + 's';
+        particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+        frag.appendChild(particle);
+      }
+      particlesBg.appendChild(frag);
+
+      // --- 光标光晕（节流 mousemove） ---
+      var cursorGlow = $('cursorGlow');
+      var rafPending = false, mouseX = 0, mouseY = 0;
+      document.addEventListener('mousemove', function(e) {
+        mouseX = e.clientX; mouseY = e.clientY;
+        if (!rafPending) {
+          rafPending = true;
+          requestAnimationFrame(function() {
+            cursorGlow.style.left = mouseX - 60 + 'px';
+            cursorGlow.style.top  = mouseY - 60 + 'px';
+            rafPending = false;
+          });
+        }
+      }, { passive: true });
+
+      // --- 点击涟漪 ---
+      document.addEventListener('click', function(e) {
+        var ripple = document.createElement('div');
+        ripple.className = 'ripple';
+        ripple.style.left = e.clientX - 25 + 'px';
+        ripple.style.top  = e.clientY - 25 + 'px';
+        ripple.style.width = '50px';
+        ripple.style.height = '50px';
+        document.body.appendChild(ripple);
+        setTimeout(function() { ripple.remove(); }, 800);
+      }, { passive: true });
+
+      // --- 实时时钟 ---
+      var liveClock = $('liveClock');
+      function updateClock() {
+        liveClock.textContent = new Date().toLocaleTimeString('en-US', { hour12: false });
+      }
+      updateClock();
+      setInterval(updateClock, 1000);
+
+      // --- 问候语 ---
+      function getGreeting() {
+        var hour = new Date().getHours();
+        if (hour < 6)  return { en: '🌙 Good night', zh: '🌙 夜深了' };
+        if (hour < 12) return { en: '☀️ Good morning', zh: '☀️ 早上好' };
+        if (hour < 18) return { en: '🌤️ Good afternoon', zh: '🌤️ 下午好' };
+        return { en: '🌙 Good evening', zh: '🌙 晚上好' };
+      }
+      var greeting = getGreeting();
+      $('greeting').textContent = greeting.en;
+      $('greetingZh').textContent = greeting.zh;
+
+      // --- 键盘快捷键 ---
+      document.addEventListener('keydown', function(e) {
+        var tag = e.target.tagName;
+        if (tag === 'INPUT' || tag === 'TEXTAREA') return;
+        switch (e.key.toLowerCase()) {
+          case 't': toggleTheme(); showToast('主题已切换 ✓'); break;
+          case 'l': switchLanguage(); break;
+          case 'h': window.scrollTo({ top: 0, behavior: 'smooth' }); break;
+        }
+      });
+
+      // --- 3D 倾斜效果（节流 + rAF） ---
+      var sectionBoxes = document.querySelectorAll('.section-box');
+      for (var k = 0; k < sectionBoxes.length; k++) {
+        (function(box) {
+          var isHovering = false;
+          var rafId = null;
+
+          box.addEventListener('mouseenter', function() { isHovering = true; });
+          box.addEventListener('mouseleave', function() {
+            isHovering = false;
+            if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
+            box.style.transform = '';
+          });
+          box.addEventListener('mousemove', function(e) {
+            if (!isHovering) return;
+            if (rafId) return; // 上一帧还未执行，跳过
+            rafId = requestAnimationFrame(function() {
+              rafId = null;
+              if (!isHovering) return;
+              var rect = box.getBoundingClientRect();
+              var x = e.clientX - rect.left;
+              var y = e.clientY - rect.top;
+              var rotateX = (y - rect.height / 2) / 25;
+              var rotateY = (rect.width / 2 - x) / 25;
+              box.style.transform = 'perspective(1000px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg)';
+            });
+          });
+        })(sectionBoxes[k]);
+      }
+    });
+  </script>
+</head>
+
+<body>
+
+  <div class="loading-bar" id="loadingBar"></div>
+
+  <div class="particles-bg" id="particlesBg"></div>
+
+  <div class="cursor-glow" id="cursorGlow"></div>
+
+  <div class="copy-toast" id="copyToast">✓ 已复制到剪贴板</div>
+
+  <div class="controls-container">
+    <button class="theme-toggle" onclick="toggleTheme()" title="切换主题 / Toggle Theme (T)">
+      <svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+
+    <button class="auto-theme-toggle" id="autoThemeToggle" onclick="toggleAutoTheme()" title="自动主题（日出/日落）/ Auto Theme (Sunrise/Sunset) (A)">
+      <span style="font-size: 18px; font-weight: bold; font-family: 'Quicksand', sans-serif;">A</span>
+    </button>
+
+    <div class="live-clock" id="liveClock">00:00:00</div>
+
+    <div class="language-switcher" onclick="switchLanguage()" title="切换语言 / Switch Language (L)">
+      <span class="lang-text">EN → 中文</span>
+    </div>
+  </div>
+
+  <div id="english-content">
+  <table
+    style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+    <tbody>
+      <tr style="padding:0px">
+        <td style="padding:0px">
+          <table
+            style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+            <tbody>
+              <tr style="padding:0px">
+                <td style="padding:2.5%;width:40%;max-width:40%">
+                  <a href="images/头像.jpg"><img style="width:100%;max-width:100%;border-radius:50%;border:4px solid #1772d0;padding:3px;box-sizing:border-box;transition:transform 0.3s ease;" alt="profile photo"
+                      src="images/头像.jpg" class="hoverZoomLink skeleton" loading="eager" onload="this.classList.add('loaded');this.classList.remove('skeleton')" onerror="this.classList.add('loaded');this.classList.remove('skeleton')"></a>
+                </td>
+                <td style="padding:2.5%;width:63%;vertical-align:middle">
+                  <div class="greeting" id="greeting"></div>
+                  <p style="text-align:left">
+                    <name>Lang Qin（秦朗）</name>
+                  </p>
+                  <p style="text-align:left;margin-top:10px;">I am a DATONG student.
+                  </p>
+                  <p style="text-align:left;margin-top:15px;">
+                    <a href="data/小明-CV.pdf">CV</a> &nbsp/&nbsp
+                    <a href="https://scholar.google.com">Google Scholar</a>
+                    &nbsp/&nbsp
+                    <a href="https://github.com/Lang0328/Lang0328.github.io" target="_blank">Github</a>
+                    <br>
+                    <a href="mailto:ronnieql0310@gmail.com">Email</a>: ronnieql0310@gmail.com
+                  </p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <table
+            class="section-box"
+            style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+            <tbody>
+              <tr>
+                <td style="padding:20px;width:100%;vertical-align:middle;text-align:left;">
+                  <heading>News</heading>
+                  <p>
+                  <strong>[2026.7]</strong>&nbsp;&nbsp;&nbsp;&nbsp;Study software engineering.<br>
+                  <strong>[2025.9]</strong>&nbsp;&nbsp;&nbsp;&nbsp;Become a student of Datong High School.
+                  </p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <table
+            class="section-box"
+            style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+            <tbody>
+              <tr>
+                <td style="padding:20px;width:100%;vertical-align:middle;text-align:left;">
+                  <heading>Research</heading>
+                  <p>
+                    <strong>Authors: Shitang Lu, Sun Yong, Lang Qin</strong>
+                  </p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <table
+            class="section-box"
+            style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+
+            <tr>
+              <td style="padding:10px;width:40%;vertical-align:middle;text-align:left;">
+                <img src='images/研究.jpg' style="width:100%;border-radius:12px" class="skeleton" loading="eager" onload="this.classList.add('loaded');this.classList.remove('skeleton')" onerror="this.classList.add('loaded');this.classList.remove('skeleton')">
+              </td>
+              <td style="padding:10px;width:60%;vertical-align:middle">
+                <a href="https://wwbed.lanzoul.com/ihZRm3uqdxxe" target="_blank">
+                  <papertitle>Software</papertitle>
+                </a>
+                <br>
+                <strong>Shitang Lu</strong>, <strong>Sun Yong</strong>, <strong>Lang Qin</strong>
+                <br>
+                Location (<strong>Shanghai</strong>), 2025
+                <br>
+                <a href="https://wwbed.lanzoul.com/ihZRm3uqdxxe" target="_blank">paper</a>
+                /
+                <a href="https://wwbed.lanzoul.com/ihZRm3uqdxxe" target="_blank">code</a>
+                /
+                <a href="https://wwbed.lanzoul.com/ihZRm3uqdxxe" target="_blank">data</a>
+                <p></p>
+                <p>We developed a seal carving software and hardware assistance system.
+                </p>
+              </td>
+            </tr>
+
+    </tbody>
+  </table>
+
+  <table class="section-box" style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;text-align:left;">
+    <tbody>
+      <tr>
+        <td style="text-align:left;padding-bottom:15px;border-bottom:1px solid rgba(255,255,255,0.1);margin-bottom:15px;">
+          <heading>Education</heading>
+        </td>
+      </tr>
+      <tr>
+        <td style="padding-top:15px;">
+          <table width="100%" align="left" border="0" cellpadding="10">
+            <tr>
+              <td style="padding:10px;width:25%;vertical-align:middle"><img src="images/校徽.png" width="80" class="skeleton" loading="eager" onload="this.classList.add('loaded');this.classList.remove('skeleton')" onerror="this.classList.add('loaded');this.classList.remove('skeleton')"></td>
+              <td width="75%" valign="center">
+                Student @ Datong High School
+                <br>
+                Sep. 2025 - Jul. 2028 (In Progress)
+                <br>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td style="padding-top:15px;">
+          <table width="100%" align="left" border="0" cellpadding="10">
+            <tr>
+              <td style="padding:10px;width:25%;vertical-align:middle"><img src="images/初中校徽.jpg" width="80" style="border-radius:50%" class="skeleton" loading="eager" onload="this.classList.add('loaded');this.classList.remove('skeleton')" onerror="this.classList.add('loaded');this.classList.remove('skeleton')"></td>
+              <td width="75%" valign="center">
+                Student @ Junior High School
+                <br>
+                Sep. 2021 - Jul. 2025 (Completed)
+                <br>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table class="section-box" style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;text-align:left;">
+      <tbody>
+        <tr>
+          <td style="padding:20px;width:100%;vertical-align:middle;text-align:left;">
+            <heading>Study</heading>
+            <p><subheading>&bull; Professional Course</subheading></p>
+            <p>
+              &nbsp;&nbsp;&nbsp;&nbsp;Programming and Comprehension <br>
+            </p>
+            <p><subheading>&bull; Elective Course</subheading></p>
+            <p>
+              &nbsp;&nbsp;&nbsp;&nbsp;The Sky of Mathematics <br>
+            </p>
+          </td>
+        </tr>
+      </tbody>
+      </table>
+
+      <table class="section-box" style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;text-align:left;">
+      <tbody>
+        <tr>
+          <td style="padding:20px;width:100%;vertical-align:middle;text-align:left;">
+            <heading>Awards</heading>
+            <p>
+              &nbsp;&nbsp;&nbsp;&nbsp;<strong>[2025.10]</strong>&nbsp;&nbsp;&nbsp;&nbsp;Global Invention Convention (China Division) - National First Prize
+            </p>
+          </td>
+        </tr>
+      </tbody>
+      </table>
+
+      <script type="text/javascript" id="clstr_globe" src="//clustrmaps.com/globe.js?d=aMVHFEovT1gn6oVMvrp2ObQJiBrdVwX3nwGXqquyIoQ&w=300&h=200"></script>
+
+      <table
+        style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+        <tbody>
+          <tr>
+            <td style="padding:0px">
+              <br>
+              <p style="text-align:right;font-size:small;">
+                Template from <a href="https://github.com/jonbarron_website">JonBarron</a>
+              </p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      </td>
+      </tr>
+  </table>
+  </div>
+
+  <div id="chinese-content" style="display:none;">
+  <table
+    style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+    <tbody>
+      <tr style="padding:0px">
+        <td style="padding:0px">
+          <table
+            style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+            <tbody>
+              <tr style="padding:0px">
+                <td style="padding:2.5%;width:40%;max-width:40%">
+                  <a href="images/头像.jpg"><img style="width:100%;max-width:100%;border-radius:50%;border:4px solid #1772d0;padding:3px;box-sizing:border-box;transition:transform 0.3s ease;" alt="头像"
+                      src="images/头像.jpg" class="hoverZoomLink skeleton" loading="eager" onload="this.classList.add('loaded');this.classList.remove('skeleton')" onerror="this.classList.add('loaded');this.classList.remove('skeleton')"></a>
+                </td>
+                <td style="padding:2.5%;width:63%;vertical-align:middle">
+                  <div class="greeting" id="greetingZh"></div>
+                  <p style="text-align:left">
+                    <name>秦朗（Lang Qin）</name>
+                  </p>
+                  <p style="text-align:left;margin-top:10px;">我是一名大同中学的学生。
+                  </p>
+                  <p style="text-align:left;margin-top:15px;">
+                    <a href="data/小明-CV.pdf">简历</a> &nbsp/&nbsp
+                    <a href="https://scholar.google.com">谷歌学术</a>
+                    &nbsp/&nbsp
+                    <a href="https://github.com">GitHub</a>
+                    <br>
+                    <a href="mailto:ronnieql0310@gmail.com">邮箱</a>: ronnieql0310@gmail.com
+                  </p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <table
+            class="section-box"
+            style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+            <tbody>
+              <tr>
+                <td style="padding:20px;width:100%;vertical-align:middle;text-align:left;">
+                  <heading>最新动态</heading>
+                  <p>
+                  <strong>[2026.7]</strong>&nbsp;&nbsp;&nbsp;&nbsp;学习软件工程。<br>
+                  <strong>[2025.9]</strong>&nbsp;&nbsp;&nbsp;&nbsp;成为大同中学的一名学生。
+                  </p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <table
+            class="section-box"
+            style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+            <tbody>
+              <tr>
+                <td style="padding:20px;width:100%;vertical-align:middle;text-align:left;">
+                  <heading>研究成果</heading>
+                  <p>
+                    <strong>作者：陆施棠, 孙瑺, 秦朗</strong>
+                  </p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <table
+            class="section-box"
+            style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+            <tr>
+              <td style="padding:10px;width:40%;vertical-align:middle;text-align:left;">
+                <img src='images/研究.jpg' style="width:100%;border-radius:12px" class="skeleton" loading="eager" onload="this.classList.add('loaded');this.classList.remove('skeleton')" onerror="this.classList.add('loaded');this.classList.remove('skeleton')">
+              </td>
+              <td style="padding:10px;width:60%;vertical-align:middle">
+                <a href="https://wwbed.lanzoul.com/ihZRm3uqdxxe" target="_blank">
+                  <papertitle>软件项目</papertitle>
+                </a>
+                <br>
+                <strong>陆施棠</strong>, <strong>孙瑺</strong>, <strong>秦朗</strong>
+                <br>
+                地点（<strong>上海</strong>），2025年
+                <br>
+                <a href="https://wwbed.lanzoul.com/ihZRm3uqdxxe" target="_blank">论文</a>
+                /
+                <a href="https://wwbed.lanzoul.com/ihZRm3uqdxxe" target="_blank">代码</a>
+                /
+                <a href="https://wwbed.lanzoul.com/ihZRm3uqdxxe" target="_blank">数据</a>
+                <p></p>
+                <p>我们开发了一套篆刻软硬件辅助系统。
+                </p>
+              </td>
+            </tr>
+
+    </tbody>
+  </table>
+
+  <table class="section-box" style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;text-align:left;">
+    <tbody>
+      <tr>
+        <td style="text-align:left;padding-bottom:15px;border-bottom:1px solid rgba(255,255,255,0.1);margin-bottom:15px;">
+          <heading>受教育经历</heading>
+        </td>
+      </tr>
+      <tr>
+        <td style="padding-top:15px;">
+          <table width="100%" align="left" border="0" cellpadding="10">
+            <tr>
+              <td style="padding:10px;width:25%;vertical-align:middle"><img src="images/校徽.png" width="80" class="skeleton" loading="eager" onload="this.classList.add('loaded');this.classList.remove('skeleton')" onerror="this.classList.add('loaded');this.classList.remove('skeleton')"></td>
+              <td width="75%" valign="center">
+                学生 @ 大同中学
+                <br>
+                2025年9月 - 2028年7月（未结业）
+                <br>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td style="padding-top:15px;">
+          <table width="100%" align="left" border="0" cellpadding="10">
+            <tr>
+              <td style="padding:10px;width:25%;vertical-align:middle"><img src="images/初中校徽.jpg" width="80" style="border-radius:50%" class="skeleton" loading="eager" onload="this.classList.add('loaded');this.classList.remove('skeleton')" onerror="this.classList.add('loaded');this.classList.remove('skeleton')"></td>
+              <td width="75%" valign="center">
+                学生 @ 初中
+                <br>
+                2021年9月 - 2025年7月（已结业）
+                <br>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table class="section-box" style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;text-align:left;">
+      <tbody>
+        <tr>
+          <td style="padding:20px;width:100%;vertical-align:middle;text-align:left;">
+            <heading>学习情况</heading>
+            <p><subheading>&bull; 专业课程</subheading></p>
+            <p>
+              &nbsp;&nbsp;&nbsp;&nbsp;编程与理解 <br>
+            </p>
+            <p><subheading>&bull; 选修课程</subheading></p>
+            <p>
+              &nbsp;&nbsp;&nbsp;&nbsp;数学的天空 <br>
+            </p>
+          </td>
+        </tr>
+      </tbody>
+      </table>
+
+      <table class="section-box" style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;text-align:left;">
+      <tbody>
+        <tr>
+          <td style="padding:20px;width:100%;vertical-align:middle;text-align:left;">
+            <heading>获奖情况</heading>
+            <p>
+              &nbsp;&nbsp;&nbsp;&nbsp;<strong>[2025.10]</strong>&nbsp;&nbsp;&nbsp;&nbsp;全球发明大会（中国赛区）- 国赛一等奖
+            </p>
+          </td>
+        </tr>
+      </tbody>
+      </table>
+
+      <table
+        style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+        <tbody>
+          <tr>
+            <td style="padding:0px">
+              <br>
+              <p style="text-align:right;font-size:small;">
+                模板来自 <a href="https://github.com/jonbarron_website">JonBarron</a>
+              </p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      </td>
+      </tr>
+  </table>
+  </div>
+
+  <button class="back-to-top" onclick="scrollToTop()" title="返回顶部 / Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="12" y1="19" x2="12" y2="5"/>
+      <polyline points="5 12 12 5 19 12"/>
+    </svg>
+  </button>
+
+</body>
+
+</html>

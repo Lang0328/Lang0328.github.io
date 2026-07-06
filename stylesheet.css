@@ -1,0 +1,298 @@
+/* latin-ext */
+@font-face {
+  font-family: 'Lato';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Lato Italic'), local('Lato-Italic'), url(https://fonts.gstatic.com/s/lato/v15/S6u8w4BMUTPHjxsAUi-qNiXg7eU0.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  font-display: swap;
+}
+
+/* latin */
+@font-face {
+  font-family: 'Lato';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Lato Italic'), local('Lato-Italic'), url(https://fonts.gstatic.com/s/lato/v15/S6u8w4BMUTPHjxsAXC-qNiXg7Q.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  font-display: swap;
+}
+
+/* latin-ext */
+@font-face {
+  font-family: 'Lato';
+  font-style: italic;
+  font-weight: 700;
+  src: local('Lato Bold Italic'), local('Lato-BoldItalic'), url(https://fonts.gstatic.com/s/lato/v15/S6u_w4BMUTPHjxsI5wq_FQftx9897sxZ.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  font-display: swap;
+}
+
+/* latin */
+@font-face {
+  font-family: 'Lato';
+  font-style: italic;
+  font-weight: 700;
+  src: local('Lato Bold Italic'), local('Lato-BoldItalic'), url(https://fonts.gstatic.com/s/lato/v15/S6u_w4BMUTPHjxsI5wq_Gwftx9897g.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  font-display: swap;
+}
+
+/* latin-ext */
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Lato Regular'), local('Lato-Regular'), url(https://fonts.gstatic.com/s/lato/v15/S6uyw4BMUTPHjxAwXiWtFCfQ7A.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  font-display: swap;
+}
+
+/* latin */
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Lato Regular'), local('Lato-Regular'), url(https://fonts.gstatic.com/s/lato/v15/S6uyw4BMUTPHjx4wXiWtFCc.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  font-display: swap;
+}
+
+/* latin-ext */
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Lato Bold'), local('Lato-Bold'), url(https://fonts.gstatic.com/s/lato/v15/S6u9w4BMUTPHh6UVSwaPGQ3q5d0N7w.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  font-display: swap;
+}
+
+/* latin */
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Lato Bold'), local('Lato-Bold'), url(https://fonts.gstatic.com/s/lato/v15/S6u9w4BMUTPHh6UVSwiPGQ3q5d0.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  font-display: swap;
+}
+
+a {
+  color: var(--accent-purple) !important;
+  text-decoration: none;
+  transition: color 0.5s ease;
+}
+
+a:focus,
+a:hover {
+  color: var(--text-secondary) !important;
+  text-decoration: none;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  animation: fadeIn 1.5s ease-in-out;
+  position: relative;
+  padding: 45px;
+  margin: 0;
+  min-height: 100vh;
+  box-sizing: border-box;
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+/* 滚动拖拽效果 - 使用 will-change 提示浏览器优化 */
+body.scroll-dragging-down .scroll-content:not(.no-scroll-effect),
+body.scroll-dragging-up .scroll-content:not(.no-scroll-effect) {
+  will-change: transform;
+}
+
+body.scroll-dragging-down .scroll-content:not(.no-scroll-effect) {
+  transform: translateY(-1px);
+}
+
+body.scroll-dragging-up .scroll-content:not(.no-scroll-effect) {
+  transform: translateY(2px);
+}
+
+body::before {
+  content: '';
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+  border: 3px solid var(--border-glow);
+  border-radius: 20px;
+  pointer-events: none;
+  z-index: 99999;
+  box-shadow:
+    0 0 20px var(--shadow-color),
+    inset 0 0 20px var(--shadow-color);
+  transition: all 0.3s ease;
+}
+
+body::after {
+  content: '';
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  right: 25px;
+  bottom: 25px;
+  border: 1px solid var(--accent-purple);
+  opacity: 0.2;
+  border-radius: 16px;
+  pointer-events: none;
+  z-index: 99998;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+td,
+th,
+tr,
+p,
+a {
+  font-family: 'Quicksand', 'Nunito', 'Segoe UI', 'Microsoft YaHei UI', sans-serif;
+  font-size: 16px;
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+strong {
+  font-family: 'Quicksand', 'Nunito', 'Segoe UI', 'Microsoft YaHei UI', sans-serif;
+  font-size: 16px;
+}
+
+heading {
+  font-family: 'Quicksand', 'Nunito', 'Segoe UI', 'Microsoft YaHei UI', sans-serif;
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--border-color);
+  display: block;
+  position: relative;
+}
+
+subheading {
+  font-family: 'Quicksand', 'Nunito', 'Segoe UI', 'Microsoft YaHei UI', sans-serif;
+  font-size: 18px;
+}
+
+papertitle {
+  font-family: 'Quicksand', 'Nunito', 'Segoe UI', 'Microsoft YaHei UI', sans-serif;
+  font-size: 16px;
+  font-weight: 700
+}
+
+name {
+  font-family: 'Quicksand', 'Nunito', 'Segoe UI', 'Microsoft YaHei UI', sans-serif;
+  font-size: 42px;
+  font-weight: 700 !important;
+}
+
+.one {
+  width: 160px;
+  height: 160px;
+  position: relative;
+}
+
+.two {
+  width: 160px;
+  height: 160px;
+  position: absolute;
+  transition: opacity .2s ease-in-out;
+}
+
+.fade {
+  transition: opacity .2s ease-in-out;
+}
+
+span.highlight {
+  background-color: #ffffd0;
+}
+
+.section-box {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 28px;
+  margin-bottom: 24px;
+  text-align: left;
+  position: relative;
+  animation: slideInUp 0.8s ease-out forwards;
+  opacity: 0;
+  transition: all 0.5s ease;
+  box-sizing: border-box;
+  content-visibility: auto;
+  contain-intrinsic-size: 100px 300px;
+}
+
+.section-box::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  right: -1px;
+  bottom: -1px;
+  border-radius: 13px;
+  padding: 1px;
+  background: linear-gradient(135deg, 
+    rgba(255,255,255,0.18), 
+    rgba(255,255,255,0.08),
+    rgba(255,255,255,0.18)
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.section-box:nth-child(1) { animation-delay: 0.1s; }
+.section-box:nth-child(2) { animation-delay: 0.2s; }
+.section-box:nth-child(3) { animation-delay: 0.3s; }
+.section-box:nth-child(4) { animation-delay: 0.4s; }
+.section-box:nth-child(5) { animation-delay: 0.5s; }
+.section-box:nth-child(6) { animation-delay: 0.6s; }
+
+.hoverZoomLink {
+  display: inline-block;
+}
+
+.hoverZoomLink:hover {
+  transform: scale(1.08);
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
