@@ -346,49 +346,6 @@
       transition: all 0.3s ease;
     }
 
-    .auto-theme-toggle {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: var(--bg-secondary);
-      border: 1px solid var(--border-glow);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s ease;
-      box-shadow: 0 2px 10px var(--shadow-color);
-      backdrop-filter: blur(10px);
-      position: relative;
-    }
-
-    .auto-theme-toggle:hover {
-      transform: scale(1.05);
-      box-shadow: 0 4px 20px var(--shadow-color);
-      border-color: var(--accent-blue);
-    }
-
-    .auto-theme-toggle.active {
-      border-color: var(--accent-blue);
-      background: rgba(23, 114, 208, 0.15);
-    }
-
-    .auto-theme-toggle span {
-      font-size: 22px;
-      font-weight: bold;
-      font-family: 'Quicksand', sans-serif;
-      color: var(--text-secondary);
-      transition: color 0.3s ease, transform 0.3s ease;
-    }
-
-    .auto-theme-toggle.active span {
-      color: var(--accent-blue);
-    }
-
-    .auto-theme-toggle:hover span {
-      transform: rotate(180deg);
-    }
-
     .back-to-top {
       position: fixed;
       bottom: 30px;
@@ -547,89 +504,6 @@
         html.setAttribute('data-theme', 'light');
         applyThemeUI(true);
         localStorage.setItem('theme', 'light');
-      }
-    }
-
-    // ====== 自动主题（日出/日落） ======
-    var autoThemeEnabled = localStorage.getItem('autoTheme') === 'true';
-    var autoThemeInterval = null;
-
-    function calculateSunriseSunset(lat, lon, date) {
-      var rad = Math.PI / 180;
-      var dayOfYear = Math.floor((date - new Date(date.getFullYear(), 0, 0)) / 86400000);
-      var zenith = 90.833 / 180 * Math.PI;
-      var lngHour = lon / 15;
-      var t = dayOfYear + ((6 - lngHour) / 24);
-      var M = (0.9856 * t) - 3.289;
-      var L = (M + (1.916 * Math.sin(rad * M)) + (0.020 * Math.sin(2 * rad * M)) + 282.634) % 360;
-      if (L < 0) L += 360;
-      var RA = Math.atan(0.91764 * Math.tan(rad * L)) / rad;
-      var Lquadrant = Math.floor(L / 90) * 90;
-      var RAquadrant = Math.floor(RA / 90) * 90;
-      RA = RA + (Lquadrant - RAquadrant);
-      RA = RA / 15;
-      var sinDec = 0.39782 * Math.sin(rad * L);
-      var cosDec = Math.cos(Math.asin(sinDec));
-      var cosH = (Math.cos(zenith) - (sinDec * Math.sin(rad * lat))) / (cosDec * Math.cos(rad * lat));
-      if (cosH > 1 || cosH < -1) return null;
-      var H = Math.acos(cosH) / rad;
-      var sunrise = (H + RA - (0.06571 * t) - 6.222 - lngHour) % 24;
-      var sunset = ((-H) + RA - (0.06571 * t) - 6.222 - lngHour) % 24;
-      if (sunrise < 0) sunrise += 24;
-      if (sunset < 0) sunset += 24;
-      return { sunrise: sunrise, sunset: sunset };
-    }
-
-    function getUserLocation() {
-      return new Promise(function(resolve) {
-        if ('geolocation' in navigator) {
-          navigator.geolocation.getCurrentPosition(
-            function(pos) { resolve({ lat: pos.coords.latitude, lon: pos.coords.longitude }); },
-            function() { resolveFallbackLocation(resolve); }
-          );
-        } else { resolveFallbackLocation(resolve); }
-      });
-    }
-
-    function resolveFallbackLocation(resolve) {
-      var offset = -new Date().getTimezoneOffset() / 60;
-      resolve({ lat: 31.23, lon: 121.47 + (offset - 8) * 15 });
-    }
-
-    async function checkAutoTheme() {
-      if (!autoThemeEnabled) return;
-      try {
-        var location = await getUserLocation();
-        var now = new Date();
-        var times = calculateSunriseSunset(location.lat, location.lon, now);
-        if (!times) return;
-        var currentHour = now.getHours() + now.getMinutes() / 60;
-        var html = document.documentElement;
-        var shouldBeLight = currentHour >= times.sunrise && currentHour < times.sunset;
-        var currentTheme = html.getAttribute('data-theme');
-        if (shouldBeLight && currentTheme !== 'light') {
-          html.setAttribute('data-theme', 'light');
-          applyThemeUI(true);
-          localStorage.setItem('theme', 'light');
-        } else if (!shouldBeLight && currentTheme === 'light') {
-          html.removeAttribute('data-theme');
-          applyThemeUI(false);
-          localStorage.setItem('theme', 'dark');
-        }
-      } catch (e) { /* 静默处理 */ }
-    }
-
-    function toggleAutoTheme() {
-      autoThemeEnabled = !autoThemeEnabled;
-      localStorage.setItem('autoTheme', autoThemeEnabled);
-      var btn = $('autoThemeToggle');
-      if (autoThemeEnabled) {
-        btn.classList.add('active');
-        checkAutoTheme();
-        autoThemeInterval = setInterval(checkAutoTheme, 60000);
-      } else {
-        btn.classList.remove('active');
-        if (autoThemeInterval) { clearInterval(autoThemeInterval); autoThemeInterval = null; }
       }
     }
 
@@ -794,14 +668,6 @@
         applyThemeUI(true);
       } else {
         applyThemeUI(false);
-      }
-
-      // --- 自动主题 ---
-      var autoThemeToggleBtn = $('autoThemeToggle');
-      if (autoThemeEnabled) {
-        autoThemeToggleBtn.classList.add('active');
-        checkAutoTheme();
-        autoThemeInterval = setInterval(checkAutoTheme, 60000);
       }
 
       // ====== 滚轮轻微拖拽动画 ======
@@ -1014,10 +880,6 @@
   <div class="controls-container">
     <button class="theme-toggle" onclick="toggleTheme()" title="切换主题 / Toggle Theme (T)">
       <svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-    </button>
-
-    <button class="auto-theme-toggle" id="autoThemeToggle" onclick="toggleAutoTheme()" title="自动主题（日出/日落）/ Auto Theme (Sunrise/Sunset) (A)">
-      <span style="font-size: 18px; font-weight: bold; font-family: 'Quicksand', sans-serif;">A</span>
     </button>
 
     <div class="live-clock" id="liveClock">00:00:00</div>
