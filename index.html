@@ -1249,17 +1249,8 @@
 
     // ====== 今日人品系统 ======
     function generateTodayLuck() {
-      var today = new Date();
-      var dateStr = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-
-      var savedData = localStorage.getItem('todayLuck_' + dateStr);
-      if (savedData) {
-        return JSON.parse(savedData);
-      }
-
-      var seed = dateStr.split('-').reduce(function(acc, val, idx) {
-        return acc * (idx + 1) + parseInt(val) * 31;
-      }, 0);
+      var now = Date.now();
+      var seed = now;
 
       var random = function(min, max) {
         seed = (seed * 9301 + 49297) % 233280;
@@ -1278,10 +1269,8 @@
 
       var luckResult = {
         score: Math.min(100, Math.max(1, Math.floor(rand))),
-        timestamp: Date.now()
+        timestamp: now
       };
-
-      localStorage.setItem('todayLuck_' + dateStr, JSON.stringify(luckResult));
 
       return luckResult;
     }
@@ -1399,7 +1388,7 @@
       <div class="luck-description" id="luckDescription">
         今天运势极佳，诸事顺遂！适合开展新项目、重要决策。
       </div>
-      <div class="luck-tip">💡 每天仅可查看一次，结果基于今日日期生成</div>
+      <div class="luck-tip">💡 点击刷新可重新获取人品值</div>
     </div>
   </div>
 
