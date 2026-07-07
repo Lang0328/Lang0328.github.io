@@ -274,6 +274,207 @@
       will-change: transform, opacity;
     }
 
+    /* ====== 今日人品按钮 ====== */
+    .luck-button-container {
+      position: absolute;
+      top: 35px;
+      left: 45px;
+      z-index: 100000;
+    }
+
+    .luck-button {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-glow);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 10px var(--shadow-color);
+      backdrop-filter: blur(10px);
+      font-size: 20px;
+      animation: luck-pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes luck-pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.08); }
+    }
+
+    .luck-button:hover {
+      transform: scale(1.15) rotate(10deg) !important;
+      box-shadow: 0 4px 20px rgba(255, 193, 7, 0.4) !important;
+      border-color: #ffc107 !important;
+      animation: none !important;
+    }
+
+    .luck-button:active {
+      transform: scale(0.95) !important;
+    }
+
+    .luck-modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(8px);
+      z-index: 999998;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .luck-modal-overlay.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .luck-modal {
+      background: var(--bg-secondary);
+      border: 2px solid var(--border-glow);
+      border-radius: 20px;
+      padding: 40px 50px;
+      text-align: center;
+      max-width: 400px;
+      width: 90%;
+      position: relative;
+      box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.5),
+        0 0 40px var(--shadow-color),
+        inset 0 0 30px rgba(255, 255, 255, 0.05);
+      transform: scale(0.8) translateY(-30px);
+      transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      backdrop-filter: blur(15px);
+    }
+
+    .luck-modal-overlay.show .luck-modal {
+      transform: scale(1) translateY(0);
+    }
+
+    .luck-close-btn {
+      position: absolute;
+      top: 12px;
+      right: 16px;
+      font-size: 28px;
+      color: var(--text-secondary);
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 5px 10px;
+      line-height: 1;
+      opacity: 0.6;
+      transition: all 0.3s ease;
+      z-index: 10;
+    }
+
+    .luck-close-btn:hover {
+      opacity: 1;
+      transform: rotate(90deg);
+      color: #ff6b6b;
+    }
+
+    .luck-title {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 25px;
+      color: var(--text-primary);
+      letter-spacing: 1px;
+    }
+
+    .luck-number {
+      font-size: 80px;
+      font-weight: bold;
+      background: linear-gradient(135deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: luck-gradient 3s ease infinite;
+      line-height: 1;
+      margin-bottom: 15px;
+    }
+
+    @keyframes luck-gradient {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    .luck-status {
+      font-size: 22px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .luck-description {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-top: 15px;
+      padding-top: 15px;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .luck-emoji-large {
+      font-size: 48px;
+      margin-bottom: 15px;
+      animation: luck-bounce 1s ease infinite;
+    }
+
+    @keyframes luck-bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .luck-tip {
+      font-size: 13px;
+      color: var(--text-secondary);
+      opacity: 0.7;
+      margin-top: 20px;
+      font-style: italic;
+    }
+
+    .luck-excellent { color: #ff6b6b; }
+    .luck-great { color: #feca57; }
+    .luck-good { color: #48dbfb; }
+    .luck-normal { color: #a29bfe; }
+    .luck-bad { color: #fd79a8; }
+    .luck-terrible { color: #636e72; }
+
+    @media (max-width: 768px) {
+      .luck-button-container {
+        top: 15px;
+        left: 20px;
+      }
+
+      .luck-modal {
+        padding: 30px 25px;
+      }
+
+      .luck-number {
+        font-size: 60px;
+      }
+
+      .luck-title {
+        font-size: 20px;
+      }
+
+      .luck-status {
+        font-size: 18px;
+      }
+    }
+
     html {
       scroll-behavior: smooth;
       -webkit-text-size-adjust: 100%;
@@ -876,39 +1077,48 @@
         });
 
         function drawMouseTrail(globalHue) {
-          for (var i = 0; i < mouseTrail.length; i++) {
+          for (var i = mouseTrail.length - 1; i >= 0; i--) {
             var point = mouseTrail[i];
             point.age++;
 
-            var alpha = (1 - i / TRAIL_LENGTH) * 0.8;
-            var size = (1 - i / TRAIL_LENGTH) * 8 + 2;
-            var trailHue = (globalHue + i * 8) % 360;
+            var fadeAlpha = Math.max(0, 1 - point.age / 40);
+            if (fadeAlpha <= 0) {
+              mouseTrail.splice(i, 1);
+              continue;
+            }
 
-            ctx.beginPath();
-            ctx.arc(point.x, point.y, size, 0, Math.PI * 2);
-            ctx.fillStyle = 'hsla(' + trailHue + ', 90%, 70%, ' + alpha + ')';
-            ctx.fill();
+            var distanceAlpha = (1 - i / TRAIL_LENGTH);
+            var alpha = distanceAlpha * fadeAlpha * 0.35;
+            var size = ((1 - i / TRAIL_LENGTH) * 5 + 1) * fadeAlpha;
+            var trailHue = (globalHue + i * 10) % 360;
 
-            if (i < TRAIL_LENGTH / 2 && size > 3) {
+            if (size > 0.5 && alpha > 0.01) {
               ctx.beginPath();
-              ctx.arc(point.x, point.y, size * 2.5, 0, Math.PI * 2);
+              ctx.arc(point.x, point.y, size, 0, Math.PI * 2);
+              ctx.fillStyle = 'hsla(' + trailHue + ', 85%, 65%, ' + alpha + ')';
+              ctx.fill();
+            }
+
+            if (i < TRAIL_LENGTH / 2 && size > 2 && alpha > 0.05) {
+              ctx.beginPath();
+              ctx.arc(point.x, point.y, size * 2, 0, Math.PI * 2);
               var glowGradient = ctx.createRadialGradient(
                 point.x, point.y, 0,
-                point.x, point.y, size * 2.5
+                point.x, point.y, size * 2
               );
-              glowGradient.addColorStop(0, 'hsla(' + trailHue + ', 90%, 70%, ' + (alpha * 0.5) + ')');
-              glowGradient.addColorStop(1, 'hsla(' + trailHue + ', 90%, 70%, 0)');
+              glowGradient.addColorStop(0, 'hsla(' + trailHue + ', 85%, 65%, ' + (alpha * 0.25) + ')');
+              glowGradient.addColorStop(1, 'hsla(' + trailHue + ', 85%, 65%, 0)');
               ctx.fillStyle = glowGradient;
               ctx.fill();
             }
 
-            if (i > 0 && i < mouseTrail.length - 1) {
+            if (i > 0 && i < mouseTrail.length - 1 && alpha > 0.08) {
               var prevPoint = mouseTrail[i - 1];
               ctx.beginPath();
               ctx.moveTo(prevPoint.x, prevPoint.y);
               ctx.lineTo(point.x, point.y);
-              ctx.strokeStyle = 'hsla(' + trailHue + ', 90%, 70%, ' + (alpha * 0.4) + ')';
-              ctx.lineWidth = size * 0.8;
+              ctx.strokeStyle = 'hsla(' + trailHue + ', 85%, 65%, ' + (alpha * 0.25) + ')';
+              ctx.lineWidth = size * 0.6;
               ctx.lineCap = 'round';
               ctx.stroke();
             }
@@ -1036,6 +1246,129 @@
         })(sectionBoxes[k]);
       }
     });
+
+    // ====== 今日人品系统 ======
+    function generateTodayLuck() {
+      var today = new Date();
+      var dateStr = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+
+      var savedData = localStorage.getItem('todayLuck_' + dateStr);
+      if (savedData) {
+        return JSON.parse(savedData);
+      }
+
+      var seed = dateStr.split('-').reduce(function(acc, val, idx) {
+        return acc * (idx + 1) + parseInt(val) * 31;
+      }, 0);
+
+      var random = function(min, max) {
+        seed = (seed * 9301 + 49297) % 233280;
+        return min + (seed / 233280) * (max - min);
+      };
+
+      var rand = random(0, 100);
+
+      if (rand < 40) {
+        rand = 41 + Math.floor(random(0, 20));
+      } else if (rand >= 50 && rand < 65) {
+        rand = 51 + Math.floor(random(0, 30));
+      } else if (rand >= 65) {
+        rand = 66 + Math.floor(random(0, 34));
+      }
+
+      var luckResult = {
+        score: Math.min(100, Math.max(1, Math.floor(rand))),
+        timestamp: Date.now()
+      };
+
+      localStorage.setItem('todayLuck_' + dateStr, JSON.stringify(luckResult));
+
+      return luckResult;
+    }
+
+    function getLuckInfo(score) {
+      if (score >= 90) {
+        return {
+          emoji: '🌟',
+          status: '🎉 大吉大利！',
+          className: 'luck-excellent',
+          description: '今天运势极佳，诸事顺遂！适合开展新项目、重要决策、表白或求婚。'
+        };
+      } else if (score >= 75) {
+        return {
+          emoji: '✨',
+          status: '👍 吉祥如意',
+          className: 'luck-great',
+          description: '今天运气不错，适合处理重要事务，会有意外收获。'
+        };
+      } else if (score >= 55) {
+        return {
+          emoji: '😊',
+          status: '😄 小有福气',
+          className: 'luck-good',
+          description: '今天整体平稳偏上，日常事务顺利，保持好心情。'
+        };
+      } else if (score >= 40) {
+        return {
+          emoji: '😐',
+          status: '🙂 平平淡淡',
+          className: 'luck-normal',
+          description: '今天运势平平，不宜冒险，稳扎稳打为佳。'
+        };
+      } else if (score >= 25) {
+        return {
+          emoji: '😅',
+          status: '⚠️ 略有不顺',
+          className: 'luck-bad',
+          description: '今天可能遇到小挫折，保持冷静，避免冲动决策。'
+        };
+      } else {
+        return {
+          emoji: '😰',
+          status: '❌ 霉运当头',
+          className: 'luck-terrible',
+          description: '今天运势较低，凡事小心谨慎，多喝水多休息。'
+        };
+      }
+    }
+
+    function showTodayLuck() {
+      var overlay = document.getElementById('luckModalOverlay');
+      var luckData = generateTodayLuck();
+      var info = getLuckInfo(luckData.score);
+
+      document.getElementById('luckEmoji').textContent = info.emoji;
+      document.getElementById('luckNumber').textContent = luckData.score;
+
+      var statusEl = document.getElementById('luckStatus');
+      statusEl.innerHTML = '<span class="' + info.className + '">' + info.status + '</span>';
+
+      document.getElementById('luckDescription').textContent = info.description;
+
+      overlay.classList.add('show');
+
+      setTimeout(function() {
+        var numberEl = document.getElementById('luckNumber');
+        numberEl.style.animation = 'none';
+        numberEl.offsetHeight;
+        numberEl.style.animation = null;
+      }, 10);
+    }
+
+    function closeLuckModal(event) {
+      if (event && event.target !== event.currentTarget) {
+        return;
+      }
+
+      var overlay = document.getElementById('luckModalOverlay');
+      overlay.classList.remove('show');
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeLuckModal();
+      }
+    });
   </script>
 
 </head>
@@ -1047,6 +1380,28 @@
 
   <!-- 鼠标光晕 -->
   <div class="cursor-glow" id="cursorGlow"></div>
+
+  <!-- 今日人品按钮 -->
+  <div class="luck-button-container">
+    <button class="luck-button" onclick="showTodayLuck()" title="今日人品 / Today's Luck">🎯</button>
+  </div>
+
+  <!-- 人品弹窗 -->
+  <div class="luck-modal-overlay" id="luckModalOverlay" onclick="closeLuckModal(event)">
+    <div class="luck-modal">
+      <button class="luck-close-btn" onclick="closeLuckModal()">×</button>
+      <div class="luck-title">✨ 今日人品 ✨</div>
+      <div class="luck-emoji-large" id="luckEmoji">🌟</div>
+      <div class="luck-number" id="luckNumber">88</div>
+      <div class="luck-status" id="luckStatus">
+        <span class="luck-excellent">🎉 大吉大利！</span>
+      </div>
+      <div class="luck-description" id="luckDescription">
+        今天运势极佳，诸事顺遂！适合开展新项目、重要决策。
+      </div>
+      <div class="luck-tip">💡 每天仅可查看一次，结果基于今日日期生成</div>
+    </div>
+  </div>
 
   <div class="loading-bar" id="loadingBar"></div>
 
